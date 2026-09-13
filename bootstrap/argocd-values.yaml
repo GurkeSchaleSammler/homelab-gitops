@@ -1,0 +1,13 @@
+global:
+  nodeSelector:
+    kubernetes.io/hostname: master512
+
+server:
+  service:
+    type: ClusterIP
+
+dex:
+  enabled: false
+
+notifications:
+  enabled: false
