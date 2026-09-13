@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik-public
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://traefik.github.io/charts
+    chart: traefik
+    targetRevision: "41.5.0"
+
+    helm:
+      valuesObject:
+        ingressClass:
+          enabled: true
+          isDefaultClass: false
+
+        providers:
+          kubernetesIngress:
+            enabled: true
+            ingressClass: traefik-public
+
+        service:
+          annotations:
+            metallb.io/address-pool: public-ingress
+            metallb.io/loadBalancerIPs: 192.168.0.240
+          spec:
+            type: LoadBalancer
+
+        deployment:
+          replicas: 1
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: traefik-public
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
