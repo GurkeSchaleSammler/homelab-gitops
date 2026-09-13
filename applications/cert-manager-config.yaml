@@ -16,7 +16,14 @@ spec:
 
     helm:
       valuesObject:
-        email: DEINE_EMAIL
+        acmeEmail: "rogerischback@outlook.com"
+
+        cloudflare:
+          secretName: cloudflare-api-token-secret
+
+        dnsZones:
+          - stoasis.ch
+          - gurkeschale.ch
 
   destination:
     server: https://kubernetes.default.svc
@@ -26,3 +33,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - SkipDryRunOnMissingResource=true
