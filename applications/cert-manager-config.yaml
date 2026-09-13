@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager-config
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/GurkeSchaleSammler/homelab-helm.git
+    targetRevision: main
+    path: charts/cert-manager-config
+
+    helm:
+      valuesObject:
+        email: DEINE_EMAIL
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cert-manager
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
