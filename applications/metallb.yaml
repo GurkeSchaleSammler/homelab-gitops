@@ -1,25 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: metallb-config
+  name: metallb
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/GurkeSchaleSammler/homelab-helm.git
-    targetRevision: main
-    path: charts/metallb-config
-
-    helm:
-      valuesObject:
-        public:
-          address: 192.168.0.240/32
-
-        internal:
-          address: 192.168.0.241/32
+    repoURL: https://metallb.github.io/metallb
+    chart: metallb
+    targetRevision: "0.16.1"
 
   destination:
     server: https://kubernetes.default.svc
@@ -29,3 +24,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
