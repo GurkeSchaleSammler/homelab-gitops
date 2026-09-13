@@ -16,6 +16,15 @@ spec:
     chart: metallb
     targetRevision: "0.16.1"
 
+    helm:
+      valuesObject:
+        speaker:
+          frr:
+            enabled: false
+
+        frrk8s:
+          enabled: false
+
   destination:
     server: https://kubernetes.default.svc
     namespace: metallb-system
