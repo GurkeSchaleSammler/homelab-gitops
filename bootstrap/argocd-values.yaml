@@ -11,3 +11,12 @@ dex:
 
 notifications:
   enabled: false
+
+server:
+  ingress:
+    enabled: true
+    hostname: argocd.gurkeschale.ch
+    ingressClassName: traefik-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-cloudflare
+    tls: true
