@@ -19,8 +19,7 @@ spec:
       valuesObject:
         public:
           address: 192.168.0.240/32
-          # Enable only after the K3s dual-stack rebuild; see docs/k3s-dual-stack.md.
-          ipv6Address: ""
+          ipv6Address: 2a02:21b4:4a85:b800::240/128
 
         internal:
           address: 192.168.0.241/32

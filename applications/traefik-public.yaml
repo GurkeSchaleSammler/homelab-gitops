@@ -30,12 +30,12 @@ spec:
           type: LoadBalancer
           annotations:
             metallb.io/address-pool: public-ingress
-            metallb.io/loadBalancerIPs: 192.168.0.240
+            metallb.io/loadBalancerIPs: "192.168.0.240,2a02:21b4:4a85:b800::240"
           spec:
-            # Future dual-stack values: docs/dual-stack/traefik-public.values.yaml
-            ipFamilyPolicy: SingleStack
+            ipFamilyPolicy: PreferDualStack
             ipFamilies:
               - IPv4
+              - IPv6
 
         deployment:
           replicas: 1

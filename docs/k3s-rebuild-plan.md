@@ -1,7 +1,7 @@
 # Geplanter Dual-Stack-Neuaufbau
 
-Stand der Bestandsaufnahme: 2026-09-20. Nur Vorbereitung und Sicherung durchgeführt;
-kein Dienst gestoppt, keine Installation entfernt und keine CIDRs live geändert.
+Stand: 2026-09-20. Der Cluster wurde mit K3s `v1.36.4+k3s1` als Dual Stack
+neu aufgebaut. Alle fünf Nodes sind Ready und besitzen IPv4- und IPv6-PodCIDRs.
 
 ## Verifizierter Bestand
 
@@ -40,7 +40,21 @@ Prüfsumme der zweiten Kopie identisch. Keine Secrets im Git-Repository.
 Die API-Exporte wurden nacheinander erstellt und sind kein atomarer Cluster-Snapshot.
 Ein vollständiger Restore-Test wurde noch nicht ausgeführt.
 
-## Vor der Freigabe des Wartungsfensters noch erledigen
+## Ausgeführter Neuaufbau
+
+- `master512` wurde mit der vorbereiteten Server-Konfiguration neu installiert.
+- Ein `RequireDualStack`-Test-Service erhielt erfolgreich je eine IPv4- und IPv6-
+  ClusterIP. Flannel meldet IPv4- und IPv6-Subnetze; alle K3s-System-Pods sind Ready.
+- Alle vier Agents wurden neu installiert und traten dem Cluster mit derselben
+  K3s-Version bei. Alle Nodes haben je ein IPv4- und IPv6-PodCIDR.
+- Benötigte ArgoCD- und Cloudflare-Secrets wurden selektiv aus der geschützten
+  Sicherung übernommen. ArgoCD `v3.5.2`/Chart `10.9.0` wurde neu installiert.
+- Root-Application und alle acht Infrastruktur-Applications sind Synced/Healthy.
+- Public Traefik wurde anschließend auf `.240` plus
+  `2a02:21b4:4a85:b800::240` mit `PreferDualStack` umgestellt. Internal Traefik
+  bleibt `SingleStack` IPv4 auf `.241`.
+
+## Frühere Vorbereitungshinweise
 
 1. Agent-Konfigurationen sichern. SSH funktioniert, nichtinteraktives sudo
    ist auf den vier Agents derzeit nicht verfügbar. Auf jedem Agent als dessen
