@@ -176,7 +176,9 @@ den Clusterpfad erlauben. NDP sowie notwendiges ICMPv6 dürfen nicht pauschal
 blockiert werden. Layer 2 genügt; BGP ist nicht erforderlich.
 
 Keine WAN-Weiterleitung auf `.241`, Anwendungs-Services oder NodePorts einrichten.
-Kubernetes API 6443, ArgoCD und Node-Verwaltungsports nicht öffentlich freigeben.
+Kubernetes API 6443 und Node-Verwaltungsports nicht öffentlich freigeben.
+ArgoCD ist ausdrücklich über HTTPS am Public Traefik freigegeben; siehe
+[ArgoCD-Zugriff](argocd-access.md). Keine separate Portfreigabe auf seinen Node anlegen.
 Die IPv6-Firewall muss auch die globalen Node-Adressen schützen. Die Trennung
 der Ingress-Klassen ersetzt keine Router-Firewall oder Mandantenisolation.
 

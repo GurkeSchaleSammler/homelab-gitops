@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-server
+  namespace: argocd
+spec:
+  # Argo CD automatically loads its serving certificate from this Secret.
+  secretName: argocd-server-tls
+  dnsNames:
+    - argocd.gurkeschale.ch
+  issuerRef:
+    name: letsencrypt-cloudflare
+    kind: ClusterIssuer
+    group: cert-manager.io

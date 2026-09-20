@@ -1,22 +1,23 @@
 global:
+  domain: argocd.gurkeschale.ch
   nodeSelector:
     kubernetes.io/hostname: master512
 
 server:
   service:
     type: ClusterIP
+  # The argocd-access Application owns the TLS passthrough route and certificate.
+  ingress:
+    enabled: false
+
+configs:
+  cm:
+    url: https://argocd.gurkeschale.ch
+  params:
+    server.insecure: false
 
 dex:
   enabled: false
 
 notifications:
   enabled: false
-
-server:
-  ingress:
-    enabled: true
-    hostname: argocd.gurkeschale.ch
-    ingressClassName: traefik-public
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-cloudflare
-    tls: true
