@@ -1,0 +1,9 @@
+# Prepared configuration for a NEW cluster; not an in-place migration.
+# Install as /etc/rancher/k3s/config.yaml only during the approved rebuild.
+disable:
+  - traefik
+  - servicelb
+cluster-cidr: 10.42.0.0/16,fd42:42::/56
+service-cidr: 10.43.0.0/16,fd43:43::/112
+flannel-ipv6-masq: true
+write-kubeconfig-mode: "0600"
