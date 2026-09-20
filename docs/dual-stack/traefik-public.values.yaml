@@ -1,0 +1,12 @@
+# Helm values to merge into applications/traefik-public.yaml's valuesObject
+# ONLY after rebuilding K3s with dual-stack networking. Not auto-deployed.
+service:
+  type: LoadBalancer
+  annotations:
+    metallb.io/address-pool: public-ingress
+    metallb.io/loadBalancerIPs: "192.168.0.240,2a02:21b4:4a85:b800::240"
+  spec:
+    ipFamilyPolicy: PreferDualStack
+    ipFamilies:
+      - IPv4
+      - IPv6

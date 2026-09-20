@@ -1,0 +1,9 @@
+# Helm values to merge into applications/metallb-config.yaml's valuesObject
+# ONLY after rebuilding K3s with dual-stack networking. Not auto-deployed.
+public:
+  address: 192.168.0.240/32
+  # Recheck the current delegated LAN prefix before activation.
+  ipv6Address: 2a02:21b4:4a85:b800::240/128
+internal:
+  address: 192.168.0.241/32
+  ipv6Address: ""

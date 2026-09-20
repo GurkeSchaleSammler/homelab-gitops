@@ -19,9 +19,12 @@ spec:
       valuesObject:
         public:
           address: 192.168.0.240/32
+          # Enable only after the K3s dual-stack rebuild; see docs/k3s-dual-stack.md.
+          ipv6Address: ""
 
         internal:
           address: 192.168.0.241/32
+          ipv6Address: ""
 
   destination:
     server: https://kubernetes.default.svc
