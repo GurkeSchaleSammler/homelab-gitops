@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: factory-postgresql
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "15"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/GurkeSchaleSammler/homelab-helm.git
+    targetRevision: main
+    path: charts/ai-products/factory-postgresql
+    helm:
+      releaseName: factory-postgresql
+      valuesObject:
+        nodeSelector:
+          kubernetes.io/hostname: master512
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ai-product-factory
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
