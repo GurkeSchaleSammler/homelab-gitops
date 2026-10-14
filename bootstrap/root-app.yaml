@@ -12,6 +12,8 @@ spec:
     repoURL: https://github.com/GurkeSchaleSammler/homelab-gitops.git
     targetRevision: main
     path: applications
+    directory:
+      recurse: true
 
   destination:
     server: https://kubernetes.default.svc
