@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/GurkeSchaleSammler/homelab-helm.git
-    targetRevision: 734504666d648dfafb1e16cea421a4452eeaa5fe
+    targetRevision: 1d0ac51d9cf1df485ba665b9fa6136b9505fd864
     path: charts/ai-products/feedback-triage-copilot
     helm:
       releaseName: feedback-triage-copilot
