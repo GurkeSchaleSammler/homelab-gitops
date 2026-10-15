@@ -18,7 +18,7 @@ spec:
       valuesObject:
         image:
           repository: ghcr.io/gurkeschalesammler/ai-product-factory-manager-man
-          digest: sha256:7c4ec2b255546cbc722cb17a092d84be3b59ed5992847a3b5ba9b729bbcf513c
+          digest: sha256:5e3f5a1115420b9c63116738e141d192a988ad9ef5af601a8b123394d8d1f0fc
         imagePullSecrets:
           - name: ghcr-manager-man
         migration:
