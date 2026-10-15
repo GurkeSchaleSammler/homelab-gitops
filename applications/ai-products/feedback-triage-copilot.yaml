@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ai-product-feedback-triage-copilot
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/GurkeSchaleSammler/homelab-helm.git
+    targetRevision: 734504666d648dfafb1e16cea421a4452eeaa5fe
+    path: charts/ai-products/feedback-triage-copilot
+    helm:
+      releaseName: feedback-triage-copilot
+      valueFiles: [values.yaml, values-factory.yaml]
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ai-product-feedback-triage-copilot
+  syncPolicy:
+    automated: {prune: true, selfHeal: true}
+    syncOptions: [CreateNamespace=true]
