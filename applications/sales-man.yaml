@@ -22,7 +22,8 @@ spec:
         imagePullSecrets:
           - name: ghcr-sales-man
         config:
-          llmModel: SET_ME
+          llmBaseUrl: https://api.deepseek.com
+          llmModel: deepseek-flash
   destination:
     server: https://kubernetes.default.svc
     namespace: ai-product-factory
