@@ -17,7 +17,7 @@ spec:
       releaseName: innovation-man
       valuesObject:
         schedule: "*/30 * * * *"
-        suspend: false
+        suspend: true
         image:
           repository: ghcr.io/gurkeschalesammler/ai-product-factory-innovation-man
           digest: sha256:ddba27c769525325e8a912e368cd4e74dd8e48068d43c4e18447327d47750991
