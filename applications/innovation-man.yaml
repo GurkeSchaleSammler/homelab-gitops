@@ -16,8 +16,7 @@ spec:
     helm:
       releaseName: innovation-man
       valuesObject:
-        # Temporary fast mode; restore to */15 together with the DB setting.
-        schedule: "* * * * *"
+        schedule: "*/15 * * * *"
         image:
           repository: ghcr.io/gurkeschalesammler/ai-product-factory-innovation-man
           digest: sha256:c12f59b72f941b3d7ba2f110d549f8f09667035ba683e4e997ab817f38525b50
