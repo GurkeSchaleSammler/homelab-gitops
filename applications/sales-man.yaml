@@ -18,7 +18,7 @@ spec:
       valuesObject:
         image:
           repository: ghcr.io/gurkeschalesammler/ai-product-factory-sales-man
-          digest: sha256:5d503143a5a7f13a956f4c00fb85cca5a83faad955357226d4983e5ee1bb3757
+          digest: sha256:3019dca9ed47432b1c866d30b428497c05140382f1cb23896752836d5ea5a844
         imagePullSecrets:
           - name: ghcr-sales-man
         config:

@@ -20,7 +20,7 @@ spec:
         suspend: false
         image:
           repository: ghcr.io/gurkeschalesammler/ai-product-factory-innovation-man
-          digest: sha256:c12f59b72f941b3d7ba2f110d549f8f09667035ba683e4e997ab817f38525b50
+          digest: sha256:ddba27c769525325e8a912e368cd4e74dd8e48068d43c4e18447327d47750991
         imagePullSecrets:
           - name: ghcr-innovation-man
         config:
